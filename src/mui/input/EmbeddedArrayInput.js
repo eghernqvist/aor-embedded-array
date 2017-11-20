@@ -8,6 +8,7 @@ import TextFieldLabel from 'material-ui/TextField/TextFieldLabel';
 import ContentCreateIcon from 'material-ui/svg-icons/content/create';
 import ActionDeleteIcon from 'material-ui/svg-icons/action/delete';
 import Divider from 'material-ui/Divider';
+import {Card, CardActions, CardText} from 'material-ui/Card';
 
 import { translate } from 'admin-on-rest';
 
@@ -111,8 +112,8 @@ export class EmbeddedArrayInput extends Component {
         };
 
         return (
-            <div className="EmbeddedArrayInputItemContainer">
-                <div style={styles.innerContainer}>
+            <Card className="EmbeddedArrayInputItemContainer">
+                <CardText style={styles.innerContainer}>
                     {React.Children.map(
                         inputs,
                         input =>
@@ -125,19 +126,19 @@ export class EmbeddedArrayInput extends Component {
                                 <EmbeddedArrayInputFormField input={input} prefix={member} {...passedProps} />
                             </div>,
                     )}
-                </div>
+                </CardText>
                 {allowRemove &&
                     !readOnly &&
                     !disabled &&
-                    <div style={styles.removeButton}>
+                    <CardActions style={styles.removeButton}>
                         <FlatButton
                             primary
                             label={translate(labelRemove, { _: 'Remove' })}
                             icon={<ActionDeleteIcon />}
                             onClick={removeItem}
                         />
-                    </div>}
-            </div>
+                    </CardActions>}
+            </Card>
         );
     };
 
